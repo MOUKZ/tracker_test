@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:tracker_demo/persentation/widgets/name_carf_widget.dart';
+
+import '../../widgets/activity_card.dart';
 
 class MobileHomeScreen extends StatelessWidget {
   final Size size;
@@ -12,10 +12,12 @@ class MobileHomeScreen extends StatelessWidget {
     return OrientationBuilder(
       builder: (context, orientation) {
         return ListView(
+          shrinkWrap: true,
           children: [
             NameCardWidget(
               size: size,
-            )
+            ),
+            ActivityCard(size: size)
           ],
         );
       },
