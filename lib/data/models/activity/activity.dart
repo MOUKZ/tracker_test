@@ -1,14 +1,14 @@
-import 'package:tracker_demo/data/data_source/dto_models/time_frames_dto.dart';
+import 'package:tracker_demo/data/models/activity/time_frames.dart';
 
-class ActivityDto {
-  TimeframesDto? timeframes;
+class Activity {
+  Timeframes? timeframes;
   String? title;
 
-  ActivityDto({this.timeframes, this.title});
+  Activity({this.timeframes, this.title});
 
-  ActivityDto.fromJson(Map<String, dynamic> json) {
+  Activity.fromJson(Map<String, dynamic> json) {
     timeframes = json['timeframes'] != null
-        ? TimeframesDto.fromJson(json['timeframes'])
+        ? Timeframes.fromJson(json['timeframes'])
         : null;
     title = json['title'];
   }
