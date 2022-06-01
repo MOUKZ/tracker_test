@@ -16,6 +16,7 @@ class ActivityCard extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.all(20),
       height: size.height * 0.2,
+      width: size.width * 0.9,
       decoration: const BoxDecoration(
         color: AppColors.workCardPrimary,
         borderRadius: BorderRadius.only(
@@ -41,14 +42,24 @@ class ActivityCard extends StatelessWidget {
                 clipBehavior: Clip.hardEdge,
                 child: Transform(
                   transform: Matrix4.translationValues(0.0, -15, 0.0),
-                  child: SvgPicture.asset('assets/images/icon-work.svg',
-                      height: (size.height * 0.2) * .6),
+                  child: SvgPicture.asset(
+                    'assets/images/icon-work.svg',
+                    height: MediaQuery.of(context).orientation ==
+                            Orientation.portrait
+                        ? (size.height * 0.2) * .6
+                        : size.height * 0.4,
+                  ),
                 ),
               ),
             ),
           ),
           Container(
-            height: (size.height * 0.2) * .7,
+            padding: const EdgeInsets.symmetric(
+              horizontal: 15,
+            ),
+            height: MediaQuery.of(context).orientation == Orientation.portrait
+                ? (size.height * 0.2) * .7
+                : size.height * 0.7,
             decoration: const BoxDecoration(
               color: AppColors.cardSecondary,
               borderRadius: BorderRadius.only(
@@ -57,6 +68,26 @@ class ActivityCard extends StatelessWidget {
                 bottomLeft: Radius.circular(20),
                 bottomRight: Radius.circular(20),
               ),
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text('Play'),
+                    SvgPicture.asset('assets/images/icon-ellipsis.svg')
+                  ],
+                ),
+                const SizedBox(height: 4),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text('10hrs'),
+                    Text('Last week - 8hrs'),
+                  ],
+                )
+              ],
             ),
           ),
         ],

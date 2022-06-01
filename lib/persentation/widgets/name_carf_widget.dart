@@ -13,6 +13,7 @@ class NameCardWidget extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.all(20),
       height: size.height * 0.3,
+      width: size.width * 0.9,
       decoration: const BoxDecoration(
         color: AppColors.cardSecondary,
         borderRadius: BorderRadius.only(

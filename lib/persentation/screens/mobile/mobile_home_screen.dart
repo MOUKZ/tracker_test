@@ -12,7 +12,10 @@ class MobileHomeScreen extends StatelessWidget {
     return OrientationBuilder(
       builder: (context, orientation) {
         return ListView(
-          shrinkWrap: true,
+          scrollDirection:
+              MediaQuery.of(context).orientation == Orientation.portrait
+                  ? Axis.vertical
+                  : Axis.horizontal,
           children: [
             NameCardWidget(
               size: size,
