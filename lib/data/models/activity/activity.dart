@@ -22,9 +22,3 @@ class Activity {
     return data;
   }
 }
-
-extension ToActivity on num {
-  num plus(num other) => this + other;
-
-  num times(num other) => this * other;
-}

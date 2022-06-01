@@ -21,7 +21,6 @@ class ActivityRepository {
     } catch (e) {
       // everything else
       BotToast.showText(text: e.toString());
-
       return [];
     }
   }
