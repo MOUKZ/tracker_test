@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'data/data_source/remote/impl/activity_api_impl.dart';
+import 'data/repository/activity_repository.dart';
+import 'logic/activity_bloc/activity_bloc.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,21 +15,27 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
+    return MultiRepositoryProvider(
+      providers: [
+        RepositoryProvider<ActivityRepository>(
+            create: (context) =>
+                ActivityRepository(activityApi: ActivityApiImpl())),
+      ],
+      child: MultiBlocProvider(
+        providers: [
+          BlocProvider<ActivityBloc>(
+            create: (BuildContext context) => ActivityBloc(
+                RepositoryProvider.of<ActivityRepository>(context)),
+          )
+        ],
+        child: MaterialApp(
+          title: 'Activity Tracker',
+          theme: ThemeData(
+            primarySwatch: Colors.blue,
+          ),
+          home: const MyHomePage(title: 'Flutter Demo Home Page'),
+        ),
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
