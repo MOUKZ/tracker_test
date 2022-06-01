@@ -1,6 +1,7 @@
 import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tracker_demo/constants/app_colors.dart';
 import 'package:tracker_demo/persentation/home_screen.dart';
 
 import 'data/data_source/remote/impl/activity_api_impl.dart';
@@ -35,8 +36,8 @@ class MyApp extends StatelessWidget {
           navigatorObservers: [BotToastNavigatorObserver()],
           title: 'Activity Tracker',
           theme: ThemeData(
-            primarySwatch: Colors.blue,
-          ),
+              primarySwatch: Colors.blue,
+              canvasColor: AppColors.backGroundColor),
           home: const HomeScreen(),
         ),
       ),

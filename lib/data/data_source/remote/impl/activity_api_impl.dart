@@ -6,13 +6,13 @@ import 'package:tracker_demo/data/data_source/remote/base/activity_api_base.dart
 import 'package:tracker_demo/data/models/activity/activity.dart';
 
 import '../../../../exceptions/http_call_exception.dart';
+import '../end_points.dart';
 
 class ActivityApiImpl extends ActivityApiBase {
   @override
   Future<List<Activity>> getActivities() async {
     try {
-      final response = await get(
-          Uri.parse('https://jsonplaceholder.typicode.com/albums/1'),
+      final response = await get(Uri.parse(EndPoints.activityEndPoint),
           headers: {'Content-Type': 'application/json'});
       if (response.statusCode != 200) {
         throw HttpCallExcetopn(
