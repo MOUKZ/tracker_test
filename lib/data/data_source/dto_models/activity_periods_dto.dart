@@ -1,3 +1,5 @@
+import 'package:tracker_demo/data/models/activity/activity_periods.dart';
+
 class ActivityPeriodsDto {
   int? current;
   int? previous;
@@ -14,5 +16,9 @@ class ActivityPeriodsDto {
     data['current'] = current;
     data['previous'] = previous;
     return data;
+  }
+
+  ActivityPeriods toActivityPeriods() {
+    return ActivityPeriods(current: current, previous: previous);
   }
 }

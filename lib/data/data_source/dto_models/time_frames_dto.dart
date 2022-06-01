@@ -1,3 +1,5 @@
+import 'package:tracker_demo/data/models/activity/time_frames.dart';
+
 import 'activity_periods_dto.dart';
 
 class TimeframesDto {
@@ -31,5 +33,12 @@ class TimeframesDto {
       data['weekly'] = weekly!.toJson();
     }
     return data;
+  }
+
+  Timeframes toTimeframes() {
+    return Timeframes(
+        daily: daily?.toActivityPeriods(),
+        weekly: weekly?.toActivityPeriods(),
+        monthly: monthly?.toActivityPeriods());
   }
 }

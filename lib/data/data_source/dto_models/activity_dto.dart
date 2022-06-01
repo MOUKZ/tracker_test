@@ -1,4 +1,5 @@
 import 'package:tracker_demo/data/data_source/dto_models/time_frames_dto.dart';
+import 'package:tracker_demo/data/models/activity/activity.dart';
 
 class ActivityDto {
   TimeframesDto? timeframes;
@@ -21,10 +22,8 @@ class ActivityDto {
     data['title'] = title;
     return data;
   }
-}
 
-extension ToActivity on num {
-  num plus(num other) => this + other;
-
-  num times(num other) => this * other;
+  Activity toActivity() {
+    return Activity(title: title, timeframes: timeframes?.toTimeframes());
+  }
 }
