@@ -2,7 +2,7 @@ import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tracker_demo/constants/app_colors.dart';
-import 'package:tracker_demo/persentation/home_screen.dart';
+import 'package:tracker_demo/persentation/pages/home_page.dart';
 
 import 'data/data_source/remote/impl/activity_api_impl.dart';
 import 'data/repository/activity_repository.dart';
@@ -38,7 +38,7 @@ class MyApp extends StatelessWidget {
           theme: ThemeData(
               primarySwatch: Colors.blue,
               canvasColor: AppColors.backGroundColor),
-          home: const HomeScreen(),
+          home: const HomePage(),
         ),
       ),
     );

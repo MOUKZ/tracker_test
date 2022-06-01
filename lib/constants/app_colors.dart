@@ -10,4 +10,6 @@ class AppColors {
   static const excerciseCardPrimary = Color(0xFF4bcf83);
   static const socialCardPrimary = Color(0xFF7235d2);
   static const selfCareCardPrimary = Color(0xFFf1c75b);
+  static const selectedText = Color(0xFFfbffff);
+  static const unSelectedText = Color(0xFF797cb1);
 }
