@@ -36,6 +36,11 @@ class MyApp extends StatelessWidget {
           navigatorObservers: [BotToastNavigatorObserver()],
           title: 'Activity Tracker',
           theme: ThemeData(
+              fontFamily: 'IBMPlexSans',
+              textTheme: TextTheme(
+                  // bodyText1: TextStyle(fontSize: 30.0),
+                  bodyMedium:
+                      TextStyle(fontSize: 18, color: AppColors.unSelectedText)),
               primarySwatch: Colors.blue,
               canvasColor: AppColors.backGroundColor),
           home: const HomePage(),

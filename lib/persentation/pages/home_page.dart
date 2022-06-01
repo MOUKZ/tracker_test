@@ -15,7 +15,9 @@ class HomePage extends StatelessWidget {
         }
 
         if (sizingInformation.deviceScreenType == DeviceScreenType.mobile) {
-          return MobileHomeScreen();
+          return MobileHomeScreen(
+            size: sizingInformation.screenSize,
+          );
         }
         if (sizingInformation.deviceScreenType == DeviceScreenType.watch) {
           return Container(color: Colors.red);
