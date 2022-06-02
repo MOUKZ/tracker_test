@@ -20,20 +20,21 @@ the structure is as follows:
          </li>
     <li> logic layer: 
             contains the blocs, states, and events for the application 
-            here we have two states: NoDataState which indicates that there is no data available.
-            DataLoadedState indicates that the data is loaded
-            DataLoadedState contains:
-                 flags: isDaily, isWeekly, isMonthly to indicate which type of activities the user selected, and activityList contains the list of all available activities, 
-                 getCurrent that returns the current activity time after providing the activity index
-                 getPrevious that returns the current activity time after providing the activity index
-                 getColors that return the current activity color after providing the activity index
-                 getImage that returns the current activity image after providing the activity index
-                 getLatPeriod that returns the currently selected type
+            here we have two states: NoDataState which indicates that there is no data available. <br>
+            
+             DataLoadedState indicates that the data is loaded
+  <ui>  DataLoadedState contains:
+              <li>   flags: isDaily, isWeekly, isMonthly to indicate which type of activities the user selected, and activityList contains the list of all available activities, </li>
+             <li>    getCurrent that returns the current activity time after providing the activity index </li>
+              <li>   getPrevious that returns the current activity time after providing the activity index </li>
+             <li>    getColors that return the current activity color after providing the activity index </li>
+              <li>   getImage that returns the current activity image after providing the activity index </li>
+               <li>  getLatPeriod that returns the currently selected type </li> </ui>
             Events are: LoadDataEvent that will be triggered to load the data
             DailyEvent to change the selected activity type to daily
             MonthlyEvent to change selected activity type to monthly
             WeeklyEvent to change selected activity type to weekly
-            ActivityBloc glues it all together </li>
+            ActivityBloc glues it all together  </li>
            
  <li> presentation layer:
         contains:
