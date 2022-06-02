@@ -4,7 +4,7 @@ abstract class ActivityState extends Equatable {}
 
 class NoDataState extends ActivityState {
   @override
-  List<Object?> get props => throw UnimplementedError();
+  List<Object?> get props => [];
 }
 
 class DataLoadedState extends ActivityState {
