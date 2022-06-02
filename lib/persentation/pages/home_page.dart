@@ -25,7 +25,9 @@ class HomePage extends StatelessWidget {
           return Container(color: Colors.red);
         }
         if (sizingInformation.deviceScreenType == DeviceScreenType.tablet) {
-          return Container(color: Colors.green);
+          return DiskTopHomeScreen(
+            size: sizingInformation.screenSize,
+          );
         }
 
         return Container(

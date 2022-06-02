@@ -13,7 +13,7 @@ class NameCardDiskTopWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.all(20),
+      // margin: const EdgeInsets.all(20),
       height: size.height * 0.9,
       width: size.width * 0.3,
       decoration: const BoxDecoration(
@@ -26,11 +26,12 @@ class NameCardDiskTopWidget extends StatelessWidget {
         ),
       ),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Expanded(
             flex: 3,
             child: Container(
-              padding: const EdgeInsets.all(10),
+              padding: const EdgeInsets.all(20),
               // height: 150,
               decoration: const BoxDecoration(
                 color: AppColors.nameCardPrimary,
@@ -41,44 +42,45 @@ class NameCardDiskTopWidget extends StatelessWidget {
                   bottomRight: Radius.circular(25),
                 ),
               ),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Expanded(
                     flex: 1,
-                    child: Container(
-                      padding: const EdgeInsets.all(2),
-                      decoration: const BoxDecoration(
-                        shape: BoxShape.circle,
-                        // borderRadius: BorderRadius.circular(100),
-                        color: Colors.white,
-                      ),
-                      child: Image.asset(
-                        "assets/images/image-jeremy.png",
-                        height: MediaQuery.of(context).orientation ==
-                                Orientation.portrait
-                            ? size.height * .09
-                            : size.height * .3,
-                        width: MediaQuery.of(context).orientation ==
-                                Orientation.portrait
-                            ? size.width * .09
-                            : size.width * .3,
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: Container(
+                        padding: EdgeInsets.all(4),
+                        decoration: const BoxDecoration(
+                          shape: BoxShape.circle,
+                          // borderRadius: BorderRadius.circular(100),
+
+                          color: Colors.white,
+                        ),
+                        child: Image.asset(
+                          "assets/images/image-jeremy.png",
+                          // height: size.height * .1,
+                          // width: size.width * .1,
+                        ),
                       ),
                     ),
                   ),
                   Expanded(
                     flex: 2,
                     child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
-                        Text(
+                      children: [
+                        SizedBox(
+                          height: size.height * .06,
+                        ),
+                        const Text(
                           "Report for",
                           style: TextStyle(color: AppColors.unSelectedText),
                         ),
-                        Text(
-                          "Jeremy Robson",
+                        const Text(
+                          "Jeremy\nRobson",
                           style: TextStyle(color: AppColors.selectedText),
                         ),
                       ],
@@ -90,38 +92,44 @@ class NameCardDiskTopWidget extends StatelessWidget {
           ),
           Expanded(
               flex: 2,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  InkWell(
-                    onTap: () {
-                      BlocProvider.of<ActivityBloc>(context).add(DailyEvent());
-                    },
-                    child: const Text(
-                      'Daily',
-                      style: TextStyle(color: AppColors.unSelectedText),
+              child: Padding(
+                padding: EdgeInsets.all(20),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    InkWell(
+                      onTap: () {
+                        BlocProvider.of<ActivityBloc>(context)
+                            .add(DailyEvent());
+                      },
+                      child: const Text(
+                        'Daily',
+                        style: TextStyle(color: AppColors.unSelectedText),
+                      ),
                     ),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      BlocProvider.of<ActivityBloc>(context).add(WeeklyEvent());
-                    },
-                    child: const Text(
-                      'Weekly',
-                      style: TextStyle(color: AppColors.selectedText),
+                    InkWell(
+                      onTap: () {
+                        BlocProvider.of<ActivityBloc>(context)
+                            .add(WeeklyEvent());
+                      },
+                      child: const Text(
+                        'Weekly',
+                        style: TextStyle(color: AppColors.selectedText),
+                      ),
                     ),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      BlocProvider.of<ActivityBloc>(context)
-                          .add(MonthlyEvent());
-                    },
-                    child: const Text(
-                      'Monthly',
-                      style: TextStyle(color: AppColors.unSelectedText),
+                    InkWell(
+                      onTap: () {
+                        BlocProvider.of<ActivityBloc>(context)
+                            .add(MonthlyEvent());
+                      },
+                      child: const Text(
+                        'Monthly',
+                        style: TextStyle(color: AppColors.unSelectedText),
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               )),
         ],
       ),

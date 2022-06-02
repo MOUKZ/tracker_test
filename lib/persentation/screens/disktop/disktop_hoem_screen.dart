@@ -1,10 +1,7 @@
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../../../logic/activity_bloc/activity_bloc.dart';
-import '../../widgets/activity_card.dart';
 import '../../widgets/activity_card_disktop.dart';
 import '../../widgets/name_card_disktop_widget.dart';
 
@@ -42,7 +39,8 @@ class DiskTopHomeScreen extends StatelessWidget {
                   ),
                   Expanded(
                     child: GridView.builder(
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2,
                       ),
                       scrollDirection: Axis.horizontal,

@@ -56,10 +56,7 @@ class ActivityCardDiskTop extends StatelessWidget {
                   transform: Matrix4.translationValues(0.0, -10, 0.0),
                   child: SvgPicture.asset(
                     'assets/images/$image',
-                    height: MediaQuery.of(context).orientation ==
-                            Orientation.portrait
-                        ? (size.height * 0.2) * .6
-                        : size.height * 0.3,
+                    height: size.height * 0.3,
                   ),
                 ),
               ),
@@ -69,9 +66,7 @@ class ActivityCardDiskTop extends StatelessWidget {
             padding: const EdgeInsets.symmetric(
               horizontal: 15,
             ),
-            height: MediaQuery.of(context).orientation == Orientation.portrait
-                ? (size.height * 0.2) * .7
-                : size.height * 0.3,
+            height: size.height * 0.3,
             decoration: const BoxDecoration(
               color: AppColors.cardSecondary,
               borderRadius: BorderRadius.only(
@@ -83,6 +78,7 @@ class ActivityCardDiskTop extends StatelessWidget {
             ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -92,11 +88,18 @@ class ActivityCardDiskTop extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: 4),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('$current hrs'),
-                    Text('Last $lastPeriod - ${previous}hrs'),
+                    Text(
+                      '$current hrs',
+                      style: TextStyle(fontWeight: FontWeight.w500),
+                    ),
+                    Text(
+                      'Last $lastPeriod - ${previous}hrs',
+                      style: TextStyle(fontWeight: FontWeight.w300),
+                    ),
                   ],
                 )
               ],
