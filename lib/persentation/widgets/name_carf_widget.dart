@@ -8,7 +8,13 @@ class NameCardWidget extends StatelessWidget {
   const NameCardWidget({
     Key? key,
     required this.size,
+    required this.isDay,
+    required this.isWeek,
+    required this.isMonth,
   }) : super(key: key);
+  final bool isDay;
+  final bool isWeek;
+  final bool isMonth;
 
   @override
   Widget build(BuildContext context) {
@@ -79,7 +85,8 @@ class NameCardWidget extends StatelessWidget {
                         ),
                         Text(
                           "Jeremy Robson",
-                          style: TextStyle(color: AppColors.selectedText),
+                          style: TextStyle(
+                              color: AppColors.selectedText, fontSize: 30),
                         ),
                       ],
                     ),
@@ -97,18 +104,24 @@ class NameCardWidget extends StatelessWidget {
                     onTap: () {
                       BlocProvider.of<ActivityBloc>(context).add(DailyEvent());
                     },
-                    child: const Text(
+                    child: Text(
                       'Daily',
-                      style: TextStyle(color: AppColors.unSelectedText),
+                      style: TextStyle(
+                          color: isDay
+                              ? AppColors.selectedText
+                              : AppColors.unSelectedText),
                     ),
                   ),
                   InkWell(
                     onTap: () {
                       BlocProvider.of<ActivityBloc>(context).add(WeeklyEvent());
                     },
-                    child: const Text(
+                    child: Text(
                       'Weekly',
-                      style: TextStyle(color: AppColors.selectedText),
+                      style: TextStyle(
+                          color: isWeek
+                              ? AppColors.selectedText
+                              : AppColors.unSelectedText),
                     ),
                   ),
                   InkWell(
@@ -116,9 +129,12 @@ class NameCardWidget extends StatelessWidget {
                       BlocProvider.of<ActivityBloc>(context)
                           .add(MonthlyEvent());
                     },
-                    child: const Text(
+                    child: Text(
                       'Monthly',
-                      style: TextStyle(color: AppColors.unSelectedText),
+                      style: TextStyle(
+                          color: isMonth
+                              ? AppColors.selectedText
+                              : AppColors.unSelectedText),
                     ),
                   ),
                 ],

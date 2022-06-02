@@ -8,7 +8,13 @@ class NameCardDiskTopWidget extends StatelessWidget {
   const NameCardDiskTopWidget({
     Key? key,
     required this.size,
+    required this.isDay,
+    required this.isWeek,
+    required this.isMonth,
   }) : super(key: key);
+  final bool isDay;
+  final bool isWeek;
+  final bool isMonth;
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +57,7 @@ class NameCardDiskTopWidget extends StatelessWidget {
                     child: Align(
                       alignment: Alignment.centerLeft,
                       child: Container(
-                        padding: EdgeInsets.all(4),
+                        padding: const EdgeInsets.all(4),
                         decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                           // borderRadius: BorderRadius.circular(100),
@@ -82,7 +88,7 @@ class NameCardDiskTopWidget extends StatelessWidget {
                         const Text(
                           "Jeremy\nRobson",
                           style: TextStyle(
-                              color: AppColors.selectedText, fontSize: 30),
+                              color: AppColors.selectedText, fontSize: 35),
                         ),
                       ],
                     ),
@@ -104,9 +110,12 @@ class NameCardDiskTopWidget extends StatelessWidget {
                         BlocProvider.of<ActivityBloc>(context)
                             .add(DailyEvent());
                       },
-                      child: const Text(
+                      child: Text(
                         'Daily',
-                        style: TextStyle(color: AppColors.unSelectedText),
+                        style: TextStyle(
+                            color: isDay
+                                ? AppColors.selectedText
+                                : AppColors.unSelectedText),
                       ),
                     ),
                     InkWell(
@@ -114,9 +123,12 @@ class NameCardDiskTopWidget extends StatelessWidget {
                         BlocProvider.of<ActivityBloc>(context)
                             .add(WeeklyEvent());
                       },
-                      child: const Text(
+                      child: Text(
                         'Weekly',
-                        style: TextStyle(color: AppColors.selectedText),
+                        style: TextStyle(
+                            color: isWeek
+                                ? AppColors.selectedText
+                                : AppColors.unSelectedText),
                       ),
                     ),
                     InkWell(
@@ -124,9 +136,12 @@ class NameCardDiskTopWidget extends StatelessWidget {
                         BlocProvider.of<ActivityBloc>(context)
                             .add(MonthlyEvent());
                       },
-                      child: const Text(
+                      child: Text(
                         'Monthly',
-                        style: TextStyle(color: AppColors.unSelectedText),
+                        style: TextStyle(
+                            color: isMonth
+                                ? AppColors.selectedText
+                                : AppColors.unSelectedText),
                       ),
                     ),
                   ],

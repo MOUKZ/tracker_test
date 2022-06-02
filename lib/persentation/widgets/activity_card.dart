@@ -107,7 +107,11 @@ class _ActivityCardState extends State<ActivityCard> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(widget.title),
+                      Text(widget.title,
+                          style: const TextStyle(
+                              color: AppColors.selectedText,
+                              fontSize: 18,
+                              fontWeight: FontWeight.w500)),
                       SvgPicture.asset('assets/images/icon-ellipsis.svg')
                     ],
                   ),
@@ -115,7 +119,13 @@ class _ActivityCardState extends State<ActivityCard> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text('${widget.current} hrs'),
+                      Text(
+                        '${widget.current} hrs',
+                        style: const TextStyle(
+                            color: AppColors.selectedText,
+                            fontSize: 30,
+                            fontWeight: FontWeight.w500),
+                      ),
                       Text('Last ${widget.lastPeriod} - ${widget.previous}hrs'),
                     ],
                   )

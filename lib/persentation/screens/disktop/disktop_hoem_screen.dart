@@ -36,6 +36,10 @@ class DiskTopHomeScreen extends StatelessWidget {
                 children: [
                   NameCardDiskTopWidget(
                     size: size,
+                    isDay: (state is DataLoadedState) ? state.isDaily : true,
+                    isMonth:
+                        (state is DataLoadedState) ? state.isMonthly : false,
+                    isWeek: (state is DataLoadedState) ? state.isWeekly : false,
                   ),
                   Expanded(
                     child: GridView.builder(

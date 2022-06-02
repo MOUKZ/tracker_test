@@ -22,7 +22,9 @@ class HomePage extends StatelessWidget {
           );
         }
         if (sizingInformation.deviceScreenType == DeviceScreenType.watch) {
-          return Container(color: Colors.red);
+          return MobileHomeScreen(
+            size: sizingInformation.screenSize,
+          );
         }
         if (sizingInformation.deviceScreenType == DeviceScreenType.tablet) {
           return DiskTopHomeScreen(

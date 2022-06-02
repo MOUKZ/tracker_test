@@ -105,7 +105,13 @@ class _ActivityCardDiskTopState extends State<ActivityCardDiskTop> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(widget.title),
+                      Text(
+                        widget.title,
+                        style: const TextStyle(
+                            fontWeight: FontWeight.w500,
+                            fontSize: 18,
+                            color: AppColors.selectedText),
+                      ),
                       SvgPicture.asset('assets/images/icon-ellipsis.svg')
                     ],
                   ),
@@ -117,7 +123,9 @@ class _ActivityCardDiskTopState extends State<ActivityCardDiskTop> {
                       Text(
                         '${widget.current} hrs',
                         style: const TextStyle(
-                            fontWeight: FontWeight.w500, fontSize: 30),
+                            fontWeight: FontWeight.w500,
+                            fontSize: 30,
+                            color: AppColors.selectedText),
                       ),
                       Text(
                         'Last ${widget.lastPeriod} - ${widget.previous}hrs',

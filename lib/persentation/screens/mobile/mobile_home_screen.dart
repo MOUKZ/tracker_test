@@ -37,6 +37,10 @@ class MobileHomeScreen extends StatelessWidget {
                 children: [
                   NameCardWidget(
                     size: size,
+                    isDay: (state is DataLoadedState) ? state.isDaily : true,
+                    isMonth:
+                        (state is DataLoadedState) ? state.isMonthly : false,
+                    isWeek: (state is DataLoadedState) ? state.isWeekly : false,
                   ),
                   ListView.builder(
                     scrollDirection: MediaQuery.of(context).orientation ==
