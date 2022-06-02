@@ -11,7 +11,9 @@ class HomePage extends StatelessWidget {
     return Scaffold(body: ResponsiveBuilder(
       builder: (context, sizingInformation) {
         if (sizingInformation.deviceScreenType == DeviceScreenType.desktop) {
-          return DiskTopHomeScreen();
+          return DiskTopHomeScreen(
+            size: sizingInformation.screenSize,
+          );
         }
 
         if (sizingInformation.deviceScreenType == DeviceScreenType.mobile) {
