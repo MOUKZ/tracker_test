@@ -4,6 +4,7 @@ class AppColors {
   static const backGroundColor = Color(0xFF0f1424);
   static const nameCardPrimary = Color(0xFF5746ea);
   static const cardSecondary = Color(0xFF1c1f4a);
+  static const cardSecondaryHover = Color(0xFF6f76c8);
   static const workCardPrimary = Color(0xFFff8b64);
   static const playCardPrimary = Color(0xFF56c2e6);
   static const stadyCardPrimary = Color(0xFFff5c7c);

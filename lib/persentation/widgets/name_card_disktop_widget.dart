@@ -81,7 +81,8 @@ class NameCardDiskTopWidget extends StatelessWidget {
                         ),
                         const Text(
                           "Jeremy\nRobson",
-                          style: TextStyle(color: AppColors.selectedText),
+                          style: TextStyle(
+                              color: AppColors.selectedText, fontSize: 30),
                         ),
                       ],
                     ),
@@ -93,7 +94,7 @@ class NameCardDiskTopWidget extends StatelessWidget {
           Expanded(
               flex: 2,
               child: Padding(
-                padding: EdgeInsets.all(20),
+                padding: const EdgeInsets.all(20),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   crossAxisAlignment: CrossAxisAlignment.start,

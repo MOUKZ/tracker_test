@@ -51,9 +51,10 @@ class MobileHomeScreen extends StatelessWidget {
                     itemBuilder: (context, index) => ActivityCard(
                       size: size,
                       current: (state as DataLoadedState)
-                          .getCurrent(index)
-                          .toString(),
-                      previous: state.getPrevious(index).toString(),
+                              .getCurrent(index)
+                              ?.toString() ??
+                          "0",
+                      previous: state.getPrevious(index)?.toString() ?? "0",
                       title: state.activityList[index].title.toString(),
                       lastPeriod: state.getLatPeriod().toString(),
                       activityColor: state.getColors(index),

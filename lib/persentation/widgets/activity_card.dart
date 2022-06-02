@@ -3,7 +3,7 @@ import 'package:flutter_svg/svg.dart';
 
 import '../../constants/app_colors.dart';
 
-class ActivityCard extends StatelessWidget {
+class ActivityCard extends StatefulWidget {
   const ActivityCard({
     Key? key,
     required this.size,
@@ -24,13 +24,19 @@ class ActivityCard extends StatelessWidget {
   final String image;
 
   @override
+  State<ActivityCard> createState() => _ActivityCardState();
+}
+
+class _ActivityCardState extends State<ActivityCard> {
+  bool hover = false;
+  @override
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.all(20),
-      height: size.height * 0.2,
-      width: size.width * 0.9,
+      height: widget.size.height * 0.2,
+      width: widget.size.width * 0.9,
       decoration: BoxDecoration(
-        color: activityColor,
+        color: widget.activityColor,
         borderRadius: const BorderRadius.only(
           topLeft: Radius.circular(20),
           topRight: Radius.circular(20),
@@ -55,51 +61,66 @@ class ActivityCard extends StatelessWidget {
                 child: Transform(
                   transform: Matrix4.translationValues(0.0, -10, 0.0),
                   child: SvgPicture.asset(
-                    'assets/images/$image',
+                    'assets/images/${widget.image}',
                     height: MediaQuery.of(context).orientation ==
                             Orientation.portrait
-                        ? (size.height * 0.2) * .6
-                        : size.height * 0.4,
+                        ? (widget.size.height * 0.2) * .6
+                        : widget.size.height * 0.4,
                   ),
                 ),
               ),
             ),
           ),
-          Container(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 15,
-            ),
-            height: MediaQuery.of(context).orientation == Orientation.portrait
-                ? (size.height * 0.2) * .7
-                : size.height * 0.7,
-            decoration: const BoxDecoration(
-              color: AppColors.cardSecondary,
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(20),
-                topRight: Radius.circular(20),
-                bottomLeft: Radius.circular(20),
-                bottomRight: Radius.circular(20),
+          MouseRegion(
+            // cursor: SystemMouseCursors.zoomIn,
+            onEnter: (k) {
+              setState(() {
+                hover = true;
+              });
+            },
+            onExit: (k) {
+              setState(() {
+                hover = false;
+              });
+            },
+            child: Container(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 15,
               ),
-            ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(title),
-                    SvgPicture.asset('assets/images/icon-ellipsis.svg')
-                  ],
+              height: MediaQuery.of(context).orientation == Orientation.portrait
+                  ? (widget.size.height * 0.2) * .7
+                  : widget.size.height * 0.7,
+              decoration: BoxDecoration(
+                color: hover
+                    ? AppColors.cardSecondaryHover
+                    : AppColors.cardSecondary,
+                borderRadius: const BorderRadius.only(
+                  topLeft: Radius.circular(20),
+                  topRight: Radius.circular(20),
+                  bottomLeft: Radius.circular(20),
+                  bottomRight: Radius.circular(20),
                 ),
-                const SizedBox(height: 4),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text('$current hrs'),
-                    Text('Last $lastPeriod - ${previous}hrs'),
-                  ],
-                )
-              ],
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(widget.title),
+                      SvgPicture.asset('assets/images/icon-ellipsis.svg')
+                    ],
+                  ),
+                  const SizedBox(height: 4),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text('${widget.current} hrs'),
+                      Text('Last ${widget.lastPeriod} - ${widget.previous}hrs'),
+                    ],
+                  )
+                ],
+              ),
             ),
           ),
         ],
