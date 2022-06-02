@@ -27,8 +27,9 @@ class MyApp extends StatelessWidget {
       child: MultiBlocProvider(
         providers: [
           BlocProvider<ActivityBloc>(
-            create: (BuildContext context) => ActivityBloc(
-                RepositoryProvider.of<ActivityRepository>(context)),
+            create: (BuildContext context) =>
+                ActivityBloc(RepositoryProvider.of<ActivityRepository>(context))
+                  ..add(LoadDataEvent()),
           )
         ],
         child: MaterialApp(
@@ -37,7 +38,7 @@ class MyApp extends StatelessWidget {
           title: 'Activity Tracker',
           theme: ThemeData(
               fontFamily: 'IBMPlexSans',
-              textTheme: TextTheme(
+              textTheme: const TextTheme(
                   // bodyText1: TextStyle(fontSize: 30.0),
                   bodyMedium:
                       TextStyle(fontSize: 18, color: AppColors.unSelectedText)),

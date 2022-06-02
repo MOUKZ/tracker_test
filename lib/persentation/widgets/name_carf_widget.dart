@@ -54,8 +54,14 @@ class NameCardWidget extends StatelessWidget {
                       ),
                       child: Image.asset(
                         "assets/images/image-jeremy.png",
-                        height: size.height * .09,
-                        width: size.width * .09,
+                        height: MediaQuery.of(context).orientation ==
+                                Orientation.portrait
+                            ? size.height * .09
+                            : size.height * .3,
+                        width: MediaQuery.of(context).orientation ==
+                                Orientation.portrait
+                            ? size.width * .09
+                            : size.width * .3,
                       ),
                     ),
                   ),

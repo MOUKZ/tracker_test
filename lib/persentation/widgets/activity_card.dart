@@ -7,9 +7,17 @@ class ActivityCard extends StatelessWidget {
   const ActivityCard({
     Key? key,
     required this.size,
+    required this.title,
+    required this.current,
+    required this.previous,
+    required this.lastPeriod,
   }) : super(key: key);
 
   final Size size;
+  final String title;
+  final String current;
+  final String previous;
+  final String lastPeriod;
 
   @override
   Widget build(BuildContext context) {
@@ -75,7 +83,7 @@ class ActivityCard extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Text('Play'),
+                    Text(title),
                     SvgPicture.asset('assets/images/icon-ellipsis.svg')
                   ],
                 ),
@@ -83,8 +91,8 @@ class ActivityCard extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text('10hrs'),
-                    Text('Last week - 8hrs'),
+                    Text('$current hrs'),
+                    Text('Last $lastPeriod - ${previous}hrs'),
                   ],
                 )
               ],
