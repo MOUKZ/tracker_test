@@ -44,6 +44,8 @@ class MobileHomeScreen extends StatelessWidget {
                     previous: state.getPrevious(index).toString(),
                     title: state.activityList[index].title.toString(),
                     lastPeriod: state.getLatPeriod().toString(),
+                    activityColor: state.getColors(index),
+                    image: state.getImage(index),
                   ),
                 )
               ],

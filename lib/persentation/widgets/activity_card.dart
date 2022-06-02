@@ -11,6 +11,8 @@ class ActivityCard extends StatelessWidget {
     required this.current,
     required this.previous,
     required this.lastPeriod,
+    required this.activityColor,
+    required this.image,
   }) : super(key: key);
 
   final Size size;
@@ -18,6 +20,8 @@ class ActivityCard extends StatelessWidget {
   final String current;
   final String previous;
   final String lastPeriod;
+  final Color activityColor;
+  final String image;
 
   @override
   Widget build(BuildContext context) {
@@ -25,9 +29,9 @@ class ActivityCard extends StatelessWidget {
       margin: const EdgeInsets.all(20),
       height: size.height * 0.2,
       width: size.width * 0.9,
-      decoration: const BoxDecoration(
-        color: AppColors.workCardPrimary,
-        borderRadius: BorderRadius.only(
+      decoration: BoxDecoration(
+        color: activityColor,
+        borderRadius: const BorderRadius.only(
           topLeft: Radius.circular(20),
           topRight: Radius.circular(20),
           bottomLeft: Radius.circular(20),
@@ -49,9 +53,9 @@ class ActivityCard extends StatelessWidget {
               child: ClipRRect(
                 clipBehavior: Clip.hardEdge,
                 child: Transform(
-                  transform: Matrix4.translationValues(0.0, -15, 0.0),
+                  transform: Matrix4.translationValues(0.0, -10, 0.0),
                   child: SvgPicture.asset(
-                    'assets/images/icon-work.svg',
+                    'assets/images/$image',
                     height: MediaQuery.of(context).orientation ==
                             Orientation.portrait
                         ? (size.height * 0.2) * .6

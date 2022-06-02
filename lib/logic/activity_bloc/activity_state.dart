@@ -40,6 +40,26 @@ class DataLoadedState extends ActivityState {
     return null;
   }
 
+  Color getColors(int index) {
+    final title = activityList[index].title;
+    if (title == "Work") return AppColors.workCardPrimary;
+    if (title == "Play") return AppColors.playCardPrimary;
+    if (title == "Study") return AppColors.stadyCardPrimary;
+    if (title == "Exercise") return AppColors.excerciseCardPrimary;
+    if (title == "Social") return AppColors.socialCardPrimary;
+    return AppColors.selfCareCardPrimary;
+  }
+
+  String getImage(int index) {
+    final title = activityList[index].title;
+    if (title == "Work") return 'icon-work.svg';
+    if (title == "Play") return 'icon-play.svg';
+    if (title == "Study") return 'icon-study.svg';
+    if (title == "Exercise") return 'icon-exercise.svg';
+    if (title == "Social") return 'icon-social.svg';
+    return 'icon-self-care.svg';
+  }
+
   @override
   List<Object?> get props => [isDaily, isMonthly, isWeekly, activityList];
 }

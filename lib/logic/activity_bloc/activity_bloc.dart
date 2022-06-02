@@ -1,6 +1,9 @@
+import 'dart:ui';
+
 import 'package:bot_toast/bot_toast.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tracker_demo/constants/app_colors.dart';
 import 'package:tracker_demo/data/models/activity/activity.dart';
 
 import '../../data/repository/activity_repository.dart';
