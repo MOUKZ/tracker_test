@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tracker_demo/constants/app_colors.dart';
+import 'package:tracker_demo/logic/activity_bloc/activity_bloc.dart';
 
 class NameCardWidget extends StatelessWidget {
   final Size size;
@@ -90,18 +92,34 @@ class NameCardWidget extends StatelessWidget {
               flex: 2,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: const [
-                  Text(
-                    'Daily',
-                    style: TextStyle(color: AppColors.unSelectedText),
+                children: [
+                  InkWell(
+                    onTap: () {
+                      BlocProvider.of<ActivityBloc>(context).add(DailyEvent());
+                    },
+                    child: const Text(
+                      'Daily',
+                      style: TextStyle(color: AppColors.unSelectedText),
+                    ),
                   ),
-                  Text(
-                    'Weekly',
-                    style: TextStyle(color: AppColors.selectedText),
+                  InkWell(
+                    onTap: () {
+                      BlocProvider.of<ActivityBloc>(context).add(WeeklyEvent());
+                    },
+                    child: const Text(
+                      'Weekly',
+                      style: TextStyle(color: AppColors.selectedText),
+                    ),
                   ),
-                  Text(
-                    'Monthly',
-                    style: TextStyle(color: AppColors.unSelectedText),
+                  InkWell(
+                    onTap: () {
+                      BlocProvider.of<ActivityBloc>(context)
+                          .add(MonthlyEvent());
+                    },
+                    child: const Text(
+                      'Monthly',
+                      style: TextStyle(color: AppColors.unSelectedText),
+                    ),
                   ),
                 ],
               )),

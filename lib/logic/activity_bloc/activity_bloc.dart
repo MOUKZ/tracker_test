@@ -35,5 +35,38 @@ class ActivityBloc extends Bloc<ActivityEvent, ActivityState> {
           isMonthly: isMonthly,
           activityList: activityList));
     });
+    on<DailyEvent>(
+      (event, emit) {
+        if (state is DataLoadedState) {
+          final newState = (state as DataLoadedState)
+              .copyWith(daily: true, weekly: false, monthly: false);
+          emit(newState);
+        } else {
+          add(LoadDataEvent());
+        }
+      },
+    );
+    on<WeeklyEvent>(
+      (event, emit) {
+        if (state is DataLoadedState) {
+          final newState = (state as DataLoadedState)
+              .copyWith(weekly: true, daily: false, monthly: false);
+          emit(newState);
+        } else {
+          add(LoadDataEvent());
+        }
+      },
+    );
+    on<MonthlyEvent>(
+      (event, emit) {
+        if (state is DataLoadedState) {
+          final newState = (state as DataLoadedState)
+              .copyWith(monthly: true, daily: false, weekly: false);
+          emit(newState);
+        } else {
+          add(LoadDataEvent());
+        }
+      },
+    );
   }
 }

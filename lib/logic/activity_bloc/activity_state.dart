@@ -19,6 +19,15 @@ class DataLoadedState extends ActivityState {
       required this.isMonthly,
       required this.activityList});
 
+  DataLoadedState copyWith(
+      {bool? daily, bool? weekly, bool? monthly, List<Activity>? list}) {
+    return DataLoadedState(
+        isDaily: daily ?? isDaily,
+        isWeekly: weekly ?? isWeekly,
+        isMonthly: monthly ?? isMonthly,
+        activityList: list ?? activityList);
+  }
+
   int? getCurrent(int index) {
     if (isDaily) return activityList[index].timeframes?.daily?.current;
     if (isWeekly) return activityList[index].timeframes?.weekly?.current;
